@@ -9,13 +9,13 @@
 - HTML5
 - CSS3
 - Javascript (https://github.com/airbnb/javascript/)
+- React (https://facebook.github.io/react/)
 - Web Components (https://developer.mozilla.org/en-US/docs/Web/Web_Components)
 - Banco de dados NoSQL (MongoDB, Firebase, etc)
 
 ### Desejáveis
 - Testes unitários
 - Testes E2E
-- React (https://facebook.github.io/react/)
 - Material Design (https://material.io/guidelines/)
 
 ## Como participar?
