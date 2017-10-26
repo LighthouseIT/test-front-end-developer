@@ -35,20 +35,20 @@
 3. Card com um grafico dos ganhos
 
 ### Especificações técnicas
-> As informações do card de *Gastos estimados* deve ser preenchida a partir dos valores vindo de uma API externa. <br>
-> Os dados dos gastos estimados devem ser consumidos a partir da URL https://lighthouse-test-front-end.firebaseio.com/estimatedExpenses.json
+As informações do card de *Gastos estimados* deve ser preenchida a partir dos valores vindo de uma API externa. <br>
+Os dados dos gastos estimados devem ser consumidos a partir da URL https://lighthouse-test-front-end.firebaseio.com/estimatedExpenses.json
 
 **Exemplo.:** <br>
 [![Exemplo](https://i.imgur.com/o1m2SSF.png)](https://i.imgur.com/o1m2SSF.png)
 
-> Sinta-se a vontade para utilizar qualquer biblioteca de gráficos para fazer a montagem do gráfico, não iremos avalidar qual biblioteca foi utilizada. <br>
-> Os dados para a montagem do gráfico devem ser consumidos a partir da URL https://lighthouse-test-front-end.firebaseio.com/amount.json
+Sinta-se a vontade para utilizar qualquer biblioteca de gráficos para fazer a montagem do gráfico, não iremos avalidar qual biblioteca foi utilizada. <br>
+Os dados para a montagem do gráfico devem ser consumidos a partir da URL https://lighthouse-test-front-end.firebaseio.com/amount.json
 
 
 ### Protótipo da aplicação
 > Click para ampliar as imagens <br>
-> Na **Lighthouse** nós utilizamos na maioria dos nossos projetos a biblioteca de icones do Material Design (https://material.io/icons/) <br>
-> Mas fique a vontade de utilizar uma biblioteca de sua preferencia. <br>
+Na **Lighthouse** nós utilizamos na maioria dos nossos projetos a biblioteca de icones do Material Design (https://material.io/icons/) <br>
+Mas fique a vontade de utilizar uma biblioteca de sua preferencia. <br>
 
 
 [![Dasiboard - Desktop](https://i.imgur.com/WaSNWWw.jpg)](https://i.imgur.com/WaSNWWw.jpg)
