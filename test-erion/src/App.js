@@ -1,0 +1,91 @@
+import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react'
+
+import MaterialIcon from './utils/materialIcons.js';
+import UserHeader from './user/userHeader.js';
+import Search from './search/search.js';
+
+class App extends Component {
+
+  state = { visible: false }
+  toggleVisibility = () => this.setState({ visible: !this.state.visible })
+
+  render() {
+
+    const { visible } = this.state
+
+    return (
+      <BrowserRouter>
+        <div className="App">
+          <Sidebar.Pushable as={Segment}>
+
+            <Sidebar as={Menu} animation='push' width='wide' visible={visible} icon='labeled' vertical inverted>
+
+              <div className="menu-header clearfix">
+                <span>Menu</span>
+                <Button onClick={this.toggleVisibility}>
+                  <MaterialIcon name="close" />
+                </Button>
+              </div>
+
+              <UserHeader />
+
+              <Menu.Item name='home'><Link to="/under-development">Home</Link></Menu.Item>
+              <Menu.Item name='todo-list'>Lista de Trabalho</Menu.Item>
+              <Menu.Item className="inner" name='calendar'><Link to="/under-development">Calendário</Link></Menu.Item>
+              <Menu.Item className="inner" name='activities'><Link to="/under-development">Atividades</Link></Menu.Item>
+              <Menu.Item name='sales'><Link to="/under-development">Ciclo de Vendas</Link></Menu.Item>
+              <Menu.Item name='marketing'><Link to="/under-development">Marketing</Link></Menu.Item>
+              <Menu.Item name='create'>Criar</Menu.Item>
+              <Menu.Item className="inner" name='task'><Link to="/under-development">Tarefa</Link></Menu.Item>
+              <Menu.Item className="inner" name='email'><Link to="/under-development">Email</Link></Menu.Item>
+              <Menu.Item className="inner" name='contact'><Link to="/under-development">Contato</Link></Menu.Item>
+              <Menu.Item className="inner" name='lead'><Link to="/under-development">Lead</Link></Menu.Item>
+              <Menu.Item className="inner" name='question'><Link to="/under-development">Questão</Link></Menu.Item>
+
+            </Sidebar>
+            <Sidebar.Pusher>
+              <Segment basic>
+                <Header as='h3'>
+                  <Button onClick={this.toggleVisibility}>
+                    <MaterialIcon name="menu" />
+                  </Button>
+                  <Search />
+                </Header>
+
+                <div id="App-content">
+
+                  <p>AAAAAAA</p>
+                  <p>AAAAAAA</p>
+                  <p>AAAAAAA</p>
+                  <p>AAAAAAA</p>
+                  <p>AAAAAAA</p>
+                  <p>AAAAAAA</p>
+                  <p>AAAAAAA</p>
+                  <p>AAAAAAA</p>
+                  <p>AAAAAAA</p>
+                  <p>AAAAAAA</p>
+                  <p>AAAAAAA</p>
+                  <p>AAAAAAA</p>
+                  <p>AAAAAAA</p>
+                  <p>AAAAAAA</p>
+
+                  {/*
+                  <Route exact path="/" render={() => <UserList listSize="4" />} />
+                  <Route path="/new-user" component={UserForm} />
+                  */}
+                </div>
+              </Segment>
+            </Sidebar.Pusher>
+          </Sidebar.Pushable>
+
+        </div>
+      </BrowserRouter>
+    );
+  }
+}
+
+export default App;
