@@ -7,8 +7,12 @@ export default class MaterialIcon extends React.Component {
   }
 
   render() {
+
+    let className = "material-icons ";
+    className += this.props.className ? this.props.className : '';
+
     return (
-      <i className="material-icons">{this.props.name}</i>
+      <i className={className}>{this.props.name}</i>
     );
   }
 

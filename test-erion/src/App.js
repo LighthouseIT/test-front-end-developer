@@ -7,6 +7,7 @@ import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui
 import MaterialIcon from './utils/materialIcons.js';
 import UserHeader from './user/userHeader.js';
 import Search from './search/search.js';
+import DashboardPage from './dashboard/dashboardPage.js';
 
 class App extends Component {
 
@@ -58,20 +59,7 @@ class App extends Component {
 
                 <div id="App-content">
 
-                  <p>AAAAAAA</p>
-                  <p>AAAAAAA</p>
-                  <p>AAAAAAA</p>
-                  <p>AAAAAAA</p>
-                  <p>AAAAAAA</p>
-                  <p>AAAAAAA</p>
-                  <p>AAAAAAA</p>
-                  <p>AAAAAAA</p>
-                  <p>AAAAAAA</p>
-                  <p>AAAAAAA</p>
-                  <p>AAAAAAA</p>
-                  <p>AAAAAAA</p>
-                  <p>AAAAAAA</p>
-                  <p>AAAAAAA</p>
+                  <DashboardPage />
 
                   {/*
                   <Route exact path="/" render={() => <UserList listSize="4" />} />
