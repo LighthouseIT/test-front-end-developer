@@ -1,0 +1,35 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  line-height: 1;
+  color: $text-primary;
+}
+
+button {
+  padding: 0;
+  outline: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.material-icons {
+  color: #fff;
+}
+
+.content-wrapper {
+  position: relative;
+  display: flex;
+  overflow-x: hidden;
+  min-height: calc(100vh - 50px);
+}
