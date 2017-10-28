@@ -1,0 +1,41 @@
+.slider {
+  .items {
+    position: relative;
+    min-height: 160px;
+  }
+
+  .item {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 300ms;
+
+    &.-active {
+      z-index: 1;
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  .dots {
+    padding: 20px 0;
+
+    button {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      padding: 0;
+      margin: 0 10px;
+      border-radius: 50%;
+      background-color: $text-dark;
+      outline: 0;
+      transition: all 300ms;
+
+      &.-current {
+        background-color: $brand-primary;
+      }
+    }
+  }
+}

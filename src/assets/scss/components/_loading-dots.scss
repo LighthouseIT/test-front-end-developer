@@ -1,0 +1,21 @@
+.loading-dots {
+  span {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: $brand-primary;
+
+    &:nth-child(1) {
+      animation: dots-bounce 800ms 0ms infinite;
+    }
+
+    &:nth-child(2) {
+      animation: dots-bounce 800ms 100ms infinite;
+    }
+
+    &:nth-child(3) {
+      animation: dots-bounce 800ms 200ms infinite;
+    }
+  }
+}

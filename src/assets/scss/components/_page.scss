@@ -1,0 +1,13 @@
+.page {
+  position: relative;
+  left: 0;
+  width: 100%;
+  min-height: calc(100vh - 60px);
+  padding-top: 10px;
+  background-color: $page-bg-primary;
+  transition: all 300ms;
+}
+
+.page.-floated-right {
+  left: 100%;
+}
