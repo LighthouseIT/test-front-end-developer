@@ -17,12 +17,72 @@
     }
   }
 
+  & > .actions-header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $text-primary;
+
+    & > ul {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+
+      & > li {
+        position: relative;
+        flex: 1;
+        border-right: 1px solid $text-primary;
+
+        &:hover ul {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+
+      ul {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        visibility: hidden;
+        opacity: 0;
+        min-width: 200px;
+        padding: 15px;
+        border-radius: 3px;
+        box-shadow: 0 0 15px rgba(#000, .1);
+        background-color: #fff;
+        transition: all 300ms;
+
+        button {
+          text-align: left;
+        }
+      }
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      color: $text-primary;
+
+      span {
+        display: none;
+      }
+    }
+
+    .material-icons {
+      color: $text-dark;
+    }
+  }
+
   & > .content {
     padding: 15px;
+    overflow-x: auto;
   }
 }
 
 .card.-estimates-card {
+  margin-bottom: 20px;
+
   .estimate {
     margin: 20px 0;
 

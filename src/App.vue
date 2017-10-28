@@ -3,7 +3,9 @@
     <the-header/>
     <div class="content-wrapper">
       <the-sidebar/>
-      <router-view/>
+      <transition name="fade" mode="out-in">
+        <router-view></router-view>
+      </transition>
     </div>
   </div>
 </template>

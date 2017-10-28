@@ -11,10 +11,5 @@ export default {
   computed: {
     ...mapGetters(['isDashboardMenuOpened']),
   },
-  data() {
-    return {
-
-    };
-  },
 };
 </script>

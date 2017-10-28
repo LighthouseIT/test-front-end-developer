@@ -6,6 +6,7 @@ body {
 }
 
 button {
+  padding: 0;
   outline: 0;
   border: 0;
   background-color: transparent;
@@ -27,6 +28,8 @@ img {
 }
 
 .content-wrapper {
+  position: relative;
   display: flex;
   overflow-x: hidden;
+  min-height: calc(100vh - 50px);
 }

@@ -54,12 +54,43 @@
         </simple-slider>
       </div>
     </article>
+
+    <article class="card -chart-card">
+      <header class="actions-header">
+        <ul>
+          <li><button type="button"><i class="material-icons">insert_chart</i><span>Gráfico</span></button></li>
+          <li>
+            <button type="button"><i class="material-icons">show_chart</i><span>Tipo</span></button>
+
+            <ul>
+              <li><button type="button">Coluna</button></li>
+              <li><button type="button">Linha</button></li>
+              <li><button type="button">Torta</button></li>
+              <li><button type="button">Coluna Agrupada</button></li>
+            </ul>
+          </li>
+          <li><button type="button"><i class="material-icons">import_export</i><span>Trocar sequência</span></button></li>
+          <li><button type="button"><i class="material-icons">picture_as_pdf</i><span>Exportar PDF</span></button></li>
+          <li><button type="button"><i class="material-icons">close</i></button></li>
+        </ul>
+      </header>
+
+      <div class="content">
+        <the-chart
+          :chart-data="chartData"
+          :options="chartOptions"
+          :width="1000"
+          :height="300"
+        ></the-chart>
+      </div>
+    </article>
   </the-page>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import ThePage from '@/components/ThePage';
+import TheChart from '@/components/TheChart';
 import SimpleSlider from '@/components/SimpleSlider';
 import SimpleSliderItem from '@/components/SimpleSliderItem';
 import LoadingDots from '@/components/LoadingDots';
@@ -67,12 +98,13 @@ import LoadingDots from '@/components/LoadingDots';
 export default {
   components: {
     ThePage,
+    TheChart,
     SimpleSlider,
     SimpleSliderItem,
     LoadingDots,
   },
   computed: {
-    ...mapGetters(['estimates']),
+    ...mapGetters(['estimates', 'estimatesChartData']),
     totalPrice() {
       return `R$ ${this.estimates.total}`;
     },
@@ -88,6 +120,79 @@ export default {
     lastMonthPrice() {
       return `R$ ${this.estimates.lastMonth}`;
     },
+  },
+  methods: {
+    ...mapActions(['updateEstimatesChartData']),
+  },
+  data() {
+    return {
+      chartData: null,
+
+      chartOptions: {
+        responsive: false,
+        maintainAspectRatio: false,
+        legend: {
+          display: false,
+        },
+        tooltips: {
+          backgroundColor: 'rgba(200, 200, 200, .5)',
+          titleFontColor: '#000',
+          bodyFontColor: '#000',
+          xPadding: 15,
+          yPadding: 15,
+          borderColor: '#000',
+          callbacks: {
+            title() {
+              return null;
+            },
+          },
+        },
+        elements: {
+          point: {
+            radius: 6,
+            backgroundColor: '#fff',
+            hoverRadius: 6,
+          },
+        },
+        scales: {
+          xAxes: [{
+            ticks: {
+              fontSize: 14,
+            },
+            gridLines: {
+              display: true,
+              borderDash: [1, 1],
+              drawTicks: true,
+              borderDashOffset: 1,
+              tickMarkLength: 20,
+            },
+          }],
+          yAxes: [{
+            gridLines: {
+              display: true,
+              borderDash: [1, 1],
+              drawTicks: true,
+              borderDashOffset: 1,
+              tickMarkLength: 20,
+            },
+          }],
+        },
+      },
+    };
+  },
+  mounted() {
+    this.updateEstimatesChartData()
+      .then(() => {
+        this.chartData = {
+          labels: this.estimatesChartData.days,
+          datasets: [{
+            data: this.estimatesChartData.values,
+            borderColor: ['#2fc1f9'],
+            borderWidth: 2,
+            fill: true,
+          }],
+        };
+      });
   },
 };
 </script>
