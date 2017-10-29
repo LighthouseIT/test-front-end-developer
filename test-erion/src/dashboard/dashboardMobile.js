@@ -16,7 +16,7 @@ export default class DashboardMobile extends React.Component {
   render() {
 
     return (
-      <div id="dashboard-mobile">
+      <div id="dashboard">
 
         <button className="filter">
           <Icon name="event" />

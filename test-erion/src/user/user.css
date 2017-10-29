@@ -28,3 +28,16 @@
   font-size: 2.5rem;
   padding: 1rem;
 }
+
+@media (min-width: 992px) { 
+	#head-user {
+    background-color: #fff;
+    box-shadow: 10px 1px 10px lightgrey;
+    float:left;
+    width: 80%;
+  }
+
+  #head-user .user-image {float: right;}
+  #head-user .user-info {float: right;}
+  #head-user .user-notifications {float: left;}  
+}

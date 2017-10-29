@@ -32,7 +32,9 @@ class App extends Component {
                 </Button>
               </div>
 
-              <UserHeader />
+              <Responsive as='span' maxWidth={576}>
+                <UserHeader />
+              </Responsive>
 
               <Menu.Item name='home'><Link to="/under-development">Home</Link></Menu.Item>
               <Menu.Item name='todo-list'>Lista de Trabalho</Menu.Item>
@@ -59,11 +61,10 @@ class App extends Component {
                   <Responsive as='span' maxWidth={576}>
                     <Search />
                   </Responsive>
-
-                  <Responsive minWidth={576}>
-                    <UserHeader />
-                  </Responsive>
                 </Header>
+                <Responsive minWidth={992}>
+                  <UserHeader />
+                </Responsive>
 
                 <div id="App-content">
                   <Route exact path="/" component={DashboardPage} />

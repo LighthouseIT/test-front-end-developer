@@ -5,7 +5,7 @@ import {
   Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
   Bar, Pie
 } from 'recharts';
-import { Dropdown } from 'semantic-ui-react';
+import { Dropdown, Responsive, Grid, GridRow, GridColumn } from 'semantic-ui-react';
 
 import './chart.css';
 import Icon from '../utils/materialIcons.js';
@@ -19,10 +19,23 @@ export default class Charts extends React.Component {
     this.state = {
       chartData: [],
       chartSelected: 'linha',
-      zoom: 100
+      zoom: 100,
+      device: null
     }
 
     this.handleChartChange = this.handleChartChange.bind(this);
+  }
+
+  componentWillMount() {
+    let device;
+    if (window.screen.width <= 576) {
+      device = 'smartphone';
+    } else if (window.screen.width <= 768) {
+      device = 'tablet';
+    } else {
+      device = 'desktop';
+    }
+    this.setState({ device: device });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -55,16 +68,20 @@ export default class Charts extends React.Component {
       { key: 3, text: 'Coluna Agrupada', value: 'coluna_agrupada' }
     ];
     const defaultZoom = {
-      'mobile': { width: 600, height: 300, pieRadius: 200 }
+      'smartphone': { width: 600, height: 400, pieRadius: 150, pieCx: 190 },
+      'tablet': { width: 1280, height: 720, pieRadius: 300, pieCx: '50%' }, //TODO: temp, fix
+      'desktop': { width: 1280, height: 720, pieRadius: 300, pieCx: '50%' }
     }
 
-    let chartWidth = defaultZoom.mobile.width * this.state.zoom / 100,
-      chartHeight = defaultZoom.mobile.height * this.state.zoom / 100,
-      pieRadius = defaultZoom.mobile.pieRadius * this.state.zoom / 100;
+    //controle de zoom dos gráficos
+    let chartWidth = defaultZoom[this.state.device].width * this.state.zoom / 100,
+      chartHeight = defaultZoom[this.state.device].height * this.state.zoom / 100,
+      pieRadius = defaultZoom[this.state.device].pieRadius * this.state.zoom / 100,
+      pieCx = defaultZoom[this.state.device].pieCx;
 
     const pieChart =
-      <PieChart width={chartWidth * 1.5} height={chartHeight * 1.5} >
-        <Pie data={this.state.chartData} cx={200} cy={200} outerRadius={pieRadius} fill={aquaBlue} dataKey="valor" />
+      <PieChart width={chartWidth} height={chartHeight} >
+        <Pie data={this.state.chartData} cx={pieCx} outerRadius={pieRadius} fill={aquaBlue} dataKey="valor" />
         <Tooltip />
       </PieChart>;
 
@@ -100,30 +117,75 @@ export default class Charts extends React.Component {
     return (
       <div id="charts">
 
-        <div className="separator">
-          <span>Minhas Contas</span>
-        </div>
+        <Responsive as='span' maxWidth={576}>
+          <div className="separator">
+            <span>Minhas Contas</span>
+          </div>
+        </Responsive>
+
+        <Grid>
+          <GridRow>
+            <GridColumn width={8} textAlign="left">
+
+            </GridColumn>
+
+            <GridColumn width={8} textAlign="right" verticalAlign="center">
+
+            </GridColumn>
+
+            <GridColumn width={8} textAlign="right" verticalAlign="center">
+
+            </GridColumn>
+
+            <GridColumn width={8} textAlign="right" verticalAlign="center">
+
+            </GridColumn>
+
+            <GridColumn width={8} textAlign="right" verticalAlign="center">
+
+            </GridColumn>
+
+            <GridColumn width={8} textAlign="right" verticalAlign="center">
+
+            </GridColumn>
+          </GridRow>
+        </Grid>
 
         <div className="chart-options">
           <Icon name="equalizer" />
 
-          <Dropdown
-            selectOnBlur={false}
-            compact
-            onChange={this.handleChartChange}
-            icon={<Icon name="timeline" />}
-            options={dropDownChartOptions}
-          />
+          <Responsive as='span' maxWidth={576}>
+            <Dropdown
+              selectOnBlur={false}
+              compact
+              onChange={this.handleChartChange}
+              icon={<Icon name="timeline" />}
+              options={dropDownChartOptions}
+            />
+          </Responsive>
+
+          <Responsive as='span' minWidth={992}>
+            <Icon name="timeline" />
+            <Dropdown
+              selectOnBlur={false}
+              compact
+              text="Tipo"
+              icon={<Icon name="expand_more" />}
+              onChange={this.handleChartChange}
+              options={dropDownChartOptions}
+            />
+            <Icon name="expand_more" />
+          </Responsive>
 
 
-          <Icon name="swap_vert" />
+          <Icon name="swap_vert" /><label>Trocar sequência</label>
           <span className="zoom">
             <span>
-              <input min="10" max="100" step="10" type="number" value={this.state.zoom}
+              <input min="10" max="200" step="10" type="number" value={this.state.zoom}
                 onChange={(e) => { this.setState({ zoom: e.target.value }) }} />%
             </span>
           </span>
-          <Icon className="csv-icon" name="insert_drive_file" />
+          <Icon className="csv-icon" name="insert_drive_file" /><label>Exportar para Excel CSV</label>
           <Icon className="close-icon" name="close" />
         </div>
 

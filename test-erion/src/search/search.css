@@ -4,3 +4,7 @@
   position: relative;
   top: -0.25rem;
 }
+
+@media (min-width: 992px) { 
+  #search i {position: initial;}
+}

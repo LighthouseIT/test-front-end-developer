@@ -14,6 +14,7 @@
   padding: 0.5rem;
 }
 
+#charts .chart-options label {display:none;}
 #charts .chart-options i.csv-icon {padding: 0.5rem 1.75rem;}
 #charts .chart-options i.close-icon {
   border-left: 1px solid;
@@ -48,4 +49,23 @@
   position: relative;
   left: 80%;
   top: -3rem;
+}
+
+@media (min-width: 992px) { 
+  #charts .ui.dropdown > .text{
+    display:initial;
+    vertical-align: super;
+  }
+
+  #charts .chart-options .icon-container {margin-right: 6rem;}
+  #charts .chart-options i.csv-icon {padding: 0.5rem 1.75rem;}
+  #charts .chart-options i.close-icon {
+    border-left: 1px solid;
+    padding-left: 0.75rem;
+  }  
+
+  #charts .chart-options label {
+    display:initial;
+    padding: 0 0 1rem 0;
+  }
 }
