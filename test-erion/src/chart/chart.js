@@ -69,7 +69,7 @@ export default class Charts extends React.Component {
     ];
     const defaultZoom = {
       'smartphone': { width: 600, height: 400, pieRadius: 150, pieCx: 190 },
-      'tablet': { width: 1280, height: 720, pieRadius: 300, pieCx: '50%' }, //TODO: temp, fix
+      'tablet': { width: 800, height: 600, pieRadius: 300, pieCx: '50%' }, //TODO: temp, fix
       'desktop': { width: 1280, height: 720, pieRadius: 300, pieCx: '50%' }
     }
 
@@ -117,7 +117,7 @@ export default class Charts extends React.Component {
     return (
       <div id="charts">
 
-        <Responsive as='span' maxWidth={576}>
+        <Responsive as='span' maxWidth={768}>
           <div className="separator">
             <span>Minhas Contas</span>
           </div>
@@ -125,12 +125,12 @@ export default class Charts extends React.Component {
 
         <Grid>
           <GridRow className="chart-options no-space">
-            <GridColumn width={2} textAlign="left">
+            <GridColumn width={2} tablet={2} textAlign="left">
               <Icon name="equalizer" />
             </GridColumn>
 
-            <GridColumn width={2} textAlign="right" verticalAlign="center">
-              <Responsive as='span' maxWidth={576}>
+            <GridColumn width={2} tablet={2} textAlign="right" verticalAlign="center">
+              <Responsive as='span' maxWidth={768}>
                 <Dropdown
                   selectOnBlur={false}
                   compact
@@ -152,11 +152,11 @@ export default class Charts extends React.Component {
               </Responsive>
             </GridColumn>
 
-            <GridColumn width={2} textAlign="right" verticalAlign="center">
+            <GridColumn width={2} tablet={2} textAlign="right" verticalAlign="center">
               <Icon name="swap_vert" /><label>Trocar sequência</label>
             </GridColumn>
 
-            <GridColumn width={2} mobile={4} textAlign="left">
+            <GridColumn width={2} mobile={4} tablet={4} textAlign="left">
               <span className="zoom">
                 <span>
                   <input min="10" max="200" step="10" type="number" value={this.state.zoom}
@@ -165,7 +165,7 @@ export default class Charts extends React.Component {
               </span>
             </GridColumn>
 
-            <GridColumn width={4} mobile={3} textAlign="left">
+            <GridColumn width={4} mobile={3} tablet={4} textAlign="left">
               <Icon className="csv-icon" name="insert_drive_file" /><label>Exportar para Excel CSV</label>
             </GridColumn>
 

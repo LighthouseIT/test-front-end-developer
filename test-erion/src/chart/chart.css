@@ -53,6 +53,12 @@
 
 #charts .ui.grid .row .column {padding: 0;}
 
+@media (min-width: 768px) { 
+  #charts .recharts-wrapper {
+    height: 1000px !important;
+  }
+}
+
 @media (min-width: 992px) { 
   #charts .ui.dropdown > .text{
     display:initial;

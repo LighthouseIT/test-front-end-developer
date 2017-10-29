@@ -8,6 +8,7 @@ import MaterialIcon from './utils/materialIcons.js';
 import UserHeader from './user/userHeader.js';
 import Search from './search/search.js';
 import DashboardPage from './dashboard/dashboardPage.js';
+import UnderDevelopment from './underDevelopment.js';
 
 class App extends Component {
 
@@ -23,7 +24,7 @@ class App extends Component {
         <div className="App">
           <Sidebar.Pushable as={Segment}>
 
-            <Responsive as='span' maxWidth={576}>
+            <Responsive as='span' maxWidth={768}>
 
               <Sidebar as={Menu} animation='push' width='wide' visible={visible} icon='labeled' vertical inverted>
 
@@ -36,7 +37,7 @@ class App extends Component {
 
                 <UserHeader />
 
-                <Menu.Item name='home'><Link to="/under-development">Home</Link></Menu.Item>
+                <Menu.Item name='home'><Link to="/">Home</Link></Menu.Item>
                 <Menu.Item name='todo-list'>Lista de Trabalho</Menu.Item>
                 <Menu.Item className="inner" name='calendar'><Link to="/under-development">Calendário</Link></Menu.Item>
                 <Menu.Item className="inner" name='activities'><Link to="/under-development">Atividades</Link></Menu.Item>
@@ -66,6 +67,7 @@ class App extends Component {
                   <div id="App-content">
                     <Route exact path="/" component={DashboardPage} />
                     <Route path="/dashboard" component={DashboardPage} />
+                    <Route path="/under-development" component={UnderDevelopment} />
                   </div>
                 </Segment>
               </Sidebar.Pusher>
@@ -86,7 +88,7 @@ class App extends Component {
                   <UserHeader />
 
                   <Sidebar as={Menu} animation='push' width='wide' visible={visible} icon='labeled' vertical inverted>
-                    <Menu.Item name='home'><Link to="/under-development">Home</Link></Menu.Item>
+                    <Menu.Item name='home'><Link to="/">Home</Link></Menu.Item>
                     <Menu.Item name='todo-list'>Lista de Trabalho</Menu.Item>
                     <Menu.Item className="inner" name='calendar'><Link to="/under-development">Calendário</Link></Menu.Item>
                     <Menu.Item className="inner" name='activities'><Link to="/under-development">Atividades</Link></Menu.Item>
@@ -102,6 +104,7 @@ class App extends Component {
                   <div id="App-content">
                     <Route exact path="/" component={DashboardPage} />
                     <Route path="/dashboard" component={DashboardPage} />
+                    <Route path="/under-development" component={UnderDevelopment} />
                   </div>
                 </Segment>
               </Sidebar.Pusher>

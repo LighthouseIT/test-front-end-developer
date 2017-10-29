@@ -33,14 +33,14 @@ export default class DashboardPage extends React.Component {
   render() {
     return (
       <div id="dashboard-page">
-        <Responsive as='span' maxWidth={576}>
+        <Responsive as='span' maxWidth={768}>
           <DashboardMobile expenses={this.state.expenses} />
         </Responsive>
         <Responsive as='div' minWidth={992}>
           <DashboardDesktop expenses={this.state.expenses} />
         </Responsive>
 
-        <Responsive as='span' maxWidth={576}>
+        <Responsive as='span' maxWidth={768}>
           <Charts data={this.state.chartData} />
         </Responsive>
         <Responsive as='div' minWidth={992}>
