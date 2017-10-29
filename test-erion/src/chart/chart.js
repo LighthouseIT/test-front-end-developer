@@ -124,70 +124,56 @@ export default class Charts extends React.Component {
         </Responsive>
 
         <Grid>
-          <GridRow>
-            <GridColumn width={8} textAlign="left">
-
+          <GridRow className="chart-options no-space">
+            <GridColumn width={2} textAlign="left">
+              <Icon name="equalizer" />
             </GridColumn>
 
-            <GridColumn width={8} textAlign="right" verticalAlign="center">
-
+            <GridColumn width={2} textAlign="right" verticalAlign="center">
+              <Responsive as='span' maxWidth={576}>
+                <Dropdown
+                  selectOnBlur={false}
+                  compact
+                  onChange={this.handleChartChange}
+                  icon={<Icon name="timeline" />}
+                  options={dropDownChartOptions}
+                />
+              </Responsive>
+              <Responsive as='span' minWidth={992}>
+                <Icon name="timeline" />
+                <Dropdown
+                  selectOnBlur={false}
+                  compact
+                  text="Tipo"
+                  icon={<Icon name="expand_more" />}
+                  onChange={this.handleChartChange}
+                  options={dropDownChartOptions}
+                />
+              </Responsive>
             </GridColumn>
 
-            <GridColumn width={8} textAlign="right" verticalAlign="center">
-
+            <GridColumn width={2} textAlign="right" verticalAlign="center">
+              <Icon name="swap_vert" /><label>Trocar sequência</label>
             </GridColumn>
 
-            <GridColumn width={8} textAlign="right" verticalAlign="center">
-
+            <GridColumn width={2} mobile={4} textAlign="left">
+              <span className="zoom">
+                <span>
+                  <input min="10" max="200" step="10" type="number" value={this.state.zoom}
+                    onChange={(e) => { this.setState({ zoom: e.target.value }) }} />%
+                </span>
+              </span>
             </GridColumn>
 
-            <GridColumn width={8} textAlign="right" verticalAlign="center">
-
+            <GridColumn width={4} mobile={3} textAlign="left">
+              <Icon className="csv-icon" name="insert_drive_file" /><label>Exportar para Excel CSV</label>
             </GridColumn>
 
-            <GridColumn width={8} textAlign="right" verticalAlign="center">
-
+            <GridColumn width={1} textAlign="right" verticalAlign="center">
+              <Icon className="close-icon" name="close" />
             </GridColumn>
           </GridRow>
         </Grid>
-
-        <div className="chart-options">
-          <Icon name="equalizer" />
-
-          <Responsive as='span' maxWidth={576}>
-            <Dropdown
-              selectOnBlur={false}
-              compact
-              onChange={this.handleChartChange}
-              icon={<Icon name="timeline" />}
-              options={dropDownChartOptions}
-            />
-          </Responsive>
-
-          <Responsive as='span' minWidth={992}>
-            <Icon name="timeline" />
-            <Dropdown
-              selectOnBlur={false}
-              compact
-              text="Tipo"
-              icon={<Icon name="expand_more" />}
-              onChange={this.handleChartChange}
-              options={dropDownChartOptions}
-            />
-            <Icon name="expand_more" />
-          </Responsive>
-
-
-          <Icon name="swap_vert" /><label>Trocar sequência</label>
-          <span className="zoom">
-            <span>
-              <input min="10" max="200" step="10" type="number" value={this.state.zoom}
-                onChange={(e) => { this.setState({ zoom: e.target.value }) }} />%
-            </span>
-          </span>
-          <Icon className="csv-icon" name="insert_drive_file" /><label>Exportar para Excel CSV</label>
-          <Icon className="close-icon" name="close" />
-        </div>
 
         {chartToRender}
 

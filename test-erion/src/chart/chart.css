@@ -51,6 +51,8 @@
   top: -3rem;
 }
 
+#charts .ui.grid .row .column {padding: 0;}
+
 @media (min-width: 992px) { 
   #charts .ui.dropdown > .text{
     display:initial;
@@ -62,6 +64,7 @@
   #charts .chart-options i.close-icon {
     border-left: 1px solid;
     padding-left: 0.75rem;
+    margin-left: 5rem;
   }  
 
   #charts .chart-options label {

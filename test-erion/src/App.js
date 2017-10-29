@@ -23,55 +23,91 @@ class App extends Component {
         <div className="App">
           <Sidebar.Pushable as={Segment}>
 
-            <Sidebar as={Menu} animation='push' width='wide' visible={visible} icon='labeled' vertical inverted>
+            <Responsive as='span' maxWidth={576}>
 
-              <div className="menu-header clearfix">
-                <span>Menu</span>
-                <Button onClick={this.toggleVisibility}>
-                  <MaterialIcon name="close" />
-                </Button>
-              </div>
+              <Sidebar as={Menu} animation='push' width='wide' visible={visible} icon='labeled' vertical inverted>
 
-              <Responsive as='span' maxWidth={576}>
-                <UserHeader />
-              </Responsive>
-
-              <Menu.Item name='home'><Link to="/under-development">Home</Link></Menu.Item>
-              <Menu.Item name='todo-list'>Lista de Trabalho</Menu.Item>
-              <Menu.Item className="inner" name='calendar'><Link to="/under-development">Calendário</Link></Menu.Item>
-              <Menu.Item className="inner" name='activities'><Link to="/under-development">Atividades</Link></Menu.Item>
-              <Menu.Item name='sales'><Link to="/under-development">Ciclo de Vendas</Link></Menu.Item>
-              <Menu.Item name='marketing'><Link to="/under-development">Marketing</Link></Menu.Item>
-              <Menu.Item name='create'>Criar</Menu.Item>
-              <Menu.Item className="inner" name='task'><Link to="/under-development">Tarefa</Link></Menu.Item>
-              <Menu.Item className="inner" name='email'><Link to="/under-development">Email</Link></Menu.Item>
-              <Menu.Item className="inner" name='contact'><Link to="/under-development">Contato</Link></Menu.Item>
-              <Menu.Item className="inner" name='lead'><Link to="/under-development">Lead</Link></Menu.Item>
-              <Menu.Item className="inner" name='question'><Link to="/under-development">Questão</Link></Menu.Item>
-
-            </Sidebar>
-            <Sidebar.Pusher>
-              <Segment basic>
-                <Header as='h3'>
+                <div className="menu-header clearfix">
+                  <span>Menu</span>
                   <Button onClick={this.toggleVisibility}>
-                    <MaterialIcon name="menu" />
+                    <MaterialIcon name="close" />
                   </Button>
-                  <span className="title">Dashboard</span>
-
-                  <Responsive as='span' maxWidth={576}>
-                    <Search />
-                  </Responsive>
-                </Header>
-                <Responsive minWidth={992}>
-                  <UserHeader />
-                </Responsive>
-
-                <div id="App-content">
-                  <Route exact path="/" component={DashboardPage} />
-                  <Route path="/dashboard" component={DashboardPage} />
                 </div>
-              </Segment>
-            </Sidebar.Pusher>
+
+                <UserHeader />
+
+                <Menu.Item name='home'><Link to="/under-development">Home</Link></Menu.Item>
+                <Menu.Item name='todo-list'>Lista de Trabalho</Menu.Item>
+                <Menu.Item className="inner" name='calendar'><Link to="/under-development">Calendário</Link></Menu.Item>
+                <Menu.Item className="inner" name='activities'><Link to="/under-development">Atividades</Link></Menu.Item>
+                <Menu.Item name='sales'><Link to="/under-development">Ciclo de Vendas</Link></Menu.Item>
+                <Menu.Item name='marketing'><Link to="/under-development">Marketing</Link></Menu.Item>
+                <Menu.Item name='create'>Criar</Menu.Item>
+                <Menu.Item className="inner" name='task'><Link to="/under-development">Tarefa</Link></Menu.Item>
+                <Menu.Item className="inner" name='email'><Link to="/under-development">Email</Link></Menu.Item>
+                <Menu.Item className="inner" name='contact'><Link to="/under-development">Contato</Link></Menu.Item>
+                <Menu.Item className="inner" name='lead'><Link to="/under-development">Lead</Link></Menu.Item>
+                <Menu.Item className="inner" name='question'><Link to="/under-development">Questão</Link></Menu.Item>
+
+              </Sidebar>
+              <Sidebar.Pusher>
+                <Segment basic>
+                  <Header as='h3'>
+                    <Button onClick={this.toggleVisibility}>
+                      <MaterialIcon name="menu" />
+                    </Button>
+                    <span className="title">Dashboard</span>
+
+                    <Responsive as='span' maxWidth={576}>
+                      <Search />
+                    </Responsive>
+                  </Header>
+
+                  <div id="App-content">
+                    <Route exact path="/" component={DashboardPage} />
+                    <Route path="/dashboard" component={DashboardPage} />
+                  </div>
+                </Segment>
+              </Sidebar.Pusher>
+            </Responsive>
+
+
+            <Responsive as='span' minWidth={992}>
+
+              <Sidebar.Pusher>
+                <Segment basic>
+                  <Header as='h3'>
+                    <Button onClick={this.toggleVisibility}>
+                      <MaterialIcon name="menu" />
+                    </Button>
+                    <span className="title">Dashboard</span>
+                  </Header>
+
+                  <UserHeader />
+
+                  <Sidebar as={Menu} animation='push' width='wide' visible={visible} icon='labeled' vertical inverted>
+                    <Menu.Item name='home'><Link to="/under-development">Home</Link></Menu.Item>
+                    <Menu.Item name='todo-list'>Lista de Trabalho</Menu.Item>
+                    <Menu.Item className="inner" name='calendar'><Link to="/under-development">Calendário</Link></Menu.Item>
+                    <Menu.Item className="inner" name='activities'><Link to="/under-development">Atividades</Link></Menu.Item>
+                    <Menu.Item name='sales'><Link to="/under-development">Ciclo de Vendas</Link></Menu.Item>
+                    <Menu.Item name='marketing'><Link to="/under-development">Marketing</Link></Menu.Item>
+                    <Menu.Item name='create'>Criar</Menu.Item>
+                    <Menu.Item className="inner" name='task'><Link to="/under-development">Tarefa</Link></Menu.Item>
+                    <Menu.Item className="inner" name='email'><Link to="/under-development">Email</Link></Menu.Item>
+                    <Menu.Item className="inner" name='contact'><Link to="/under-development">Contato</Link></Menu.Item>
+                    <Menu.Item className="inner" name='lead'><Link to="/under-development">Lead</Link></Menu.Item>
+                    <Menu.Item className="inner" name='question'><Link to="/under-development">Questão</Link></Menu.Item>
+                  </Sidebar>
+                  <div id="App-content">
+                    <Route exact path="/" component={DashboardPage} />
+                    <Route path="/dashboard" component={DashboardPage} />
+                  </div>
+                </Segment>
+              </Sidebar.Pusher>
+            </Responsive>
+
+
           </Sidebar.Pushable>
 
         </div>
