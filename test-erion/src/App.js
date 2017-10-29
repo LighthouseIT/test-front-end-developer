@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
-import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react'
+import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Responsive } from 'semantic-ui-react'
 
 import MaterialIcon from './utils/materialIcons.js';
 import UserHeader from './user/userHeader.js';
@@ -54,24 +54,27 @@ class App extends Component {
                   <Button onClick={this.toggleVisibility}>
                     <MaterialIcon name="menu" />
                   </Button>
-                  <Search />
+                  <span className="title">Dashboard</span>
+
+                  <Responsive as='span' maxWidth={576}>
+                    <Search />
+                  </Responsive>
+
+                  <Responsive minWidth={576}>
+                    <UserHeader />
+                  </Responsive>
                 </Header>
 
                 <div id="App-content">
-
-                  <DashboardPage />
-
-                  {/*
-                  <Route exact path="/" render={() => <UserList listSize="4" />} />
-                  <Route path="/new-user" component={UserForm} />
-                  */}
+                  <Route exact path="/" component={DashboardPage} />
+                  <Route path="/dashboard" component={DashboardPage} />
                 </div>
               </Segment>
             </Sidebar.Pusher>
           </Sidebar.Pushable>
 
         </div>
-      </BrowserRouter>
+      </BrowserRouter >
     );
   }
 }

@@ -74,9 +74,18 @@ a {
 	margin: 1.5rem 2.5rem;
 }
 
-.ui.header {background-color: #05E5E5;}
-.ui.segment {padding: 0;}
+.ui.header {
+	background-color: #05E5E5;
+	border-bottom: 1rem solid #E6FFFE;
+	color: #fff;
+}
+.ui.header .title {
+	position: relative;
+	top: -0.75rem;
+	left: 2rem;	
+}
 
+.ui.segment {padding: 0;}
 .ui.inverted.menu {
 	background-color: #fff;
 }
@@ -103,8 +112,3 @@ div.item.inner {
 	width: 100%;
 }
 
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
