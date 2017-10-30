@@ -9,7 +9,7 @@
 - HTML5
 - CSS3
 - Javascript (https://github.com/airbnb/javascript/)
-- React (https://facebook.github.io/react/)
+- React (https://facebook.github.io/react/) ou Vue (https://vuejs.org/)
 - Web Components (https://developer.mozilla.org/en-US/docs/Web/Web_Components)
 - Banco de dados NoSQL (MongoDB, Firebase, etc)
 
