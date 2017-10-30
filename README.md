@@ -24,7 +24,7 @@
 ## Detalhes da prova
 > A prova consiste em desenvolver a Dashboard de uma aplicação web. <br>
 > Priorizar o desenvolvimento de Mobile-first, este será um requisito na avaliação do teste. <br>
-> A aplicação deve ser desenvolvido de preferencia utilizando algum framework Javascript (**React**, Angular2, Vue, etc). <br>
+> A aplicação deve ser desenvolvida de preferência utilizando algum framework Javascript (**React**, Angular2, Vue, etc). <br>
 
 ### Funcionalidades
 > Na aplicação devem conter as seguintes funcionalidades:
