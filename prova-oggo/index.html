@@ -1,0 +1,95 @@
+<!-- @author: Oggo Petersen -->
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <!-- Ícones da aplicação - CDN do font-awesome -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src='vendor.js' charset="utf-8"></script>
+  <script src='bundle.js' charset="utf-8"></script>
+
+  <div class="main-container" ng-app="lighthouseApp" ng-controller="DashboardController">
+    <!-- BEGIN: Header de navegação -->
+    <div class="header">
+      <!-- Título -->
+      <div class="title">
+        <div class="smartphone">
+          <div class="menu-button">
+            <i class="fa fa-bars" ng-click="toggleLeftMenu()"></i>
+          </div>
+          <div class="title-text">
+            Dashboard
+          </div>
+        </div>
+        <div class="title-text">
+          Dashboard
+        </div>
+      </div>
+
+      <!-- Ícones -->
+      <div class="icons">
+        <div class="icon">
+          <i class="fa fa-bell" aria-hidden="true"></i>
+          <div class="badge">6</div>
+        </div>
+        <div class="icon">
+          <i class="fa fa-comment-o" aria-hidden="true"></i>
+        </div>
+        <div class="icon">
+          <i class="fa fa-cog" aria-hidden="true"></i>
+        </div>
+        <div class="icon">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </div>
+      </div>
+
+      <!-- Informações do usuário -->
+      <div class="user-info">
+        <div class="user-data">
+          <div class="user-name">Usuário</div>
+          <div class="user-type">Gerente</div>
+        </div>
+        <div class="user-picture">
+          <i class="fa fa-user-circle" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+    <!-- END: Header de navegação -->
+
+    <!-- BEGIN: Menu esquerdo de navegação -->
+    <div class="left-menu" ng-class="{'show': toggleMenu}">
+      <ul class="options">
+        <li class="option">
+          Home
+        </li>
+        <li class="option">
+          Lista de Trabalho
+          <ul class="suboptions">
+            <li class="suboption">Calendário</li>
+            <li class="suboption">Atividades</li>
+          </ul>
+        </li>
+        <li class="option">Ciclo de Vendas</li>
+        <li class="option">Marketing</li>
+      </ul>
+      <ul class="options">
+        <li class="option">
+          + Criar
+          <ul class="suboptions">
+            <li class="suboption">Tarefa</li>
+            <li class="suboption">Email</li>
+            <li class="suboption">Contato</li>
+            <li class="suboption">Lead</li>
+            <li class="suboption">Questão</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <!-- END: Menu esquerdo de navegação -->
+
+    <!-- Telas da aplicação -->
+    <div class="content-container" ng-class="{'hide': toggleMenu}">
+      <div ng-view></div>
+    </div>
+  </div>
+</body>

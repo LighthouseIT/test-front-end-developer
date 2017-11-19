@@ -1,0 +1,374 @@
+// @author: Oggo Petersen
+
+// Variável do design responsivo.
+@smartphones: ~"only screen and (max-width: 700px)";
+@tablets: ~"only screen and (min-width: 701px) and (max-width: 959px)";
+
+html {
+  height: 100vh;
+}
+body {
+  margin: 0px;
+  font-family: sans-serif;
+  background-color: #EEF1F5;
+  min-height: 100vh;
+}
+
+// Estilização.
+.main-container {
+  width: 100%;
+
+  // BEGIN: Regras de header.
+  .header {
+    min-height: 64px;
+    background-color: #2D5F8B;
+    width: 100%;
+    height: 60px;
+
+    // Regras do title do header.
+    .title {
+      display: inline-flex;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      vertical-align: top;
+      padding-left: 10px;
+      padding-right: 10px;
+      font-size: 20px;
+      color: #FFF;
+      width: 180px;
+      height: 100%;
+      .title-text {
+        display: inline-block;
+      }
+      .smartphone {
+        display: none;
+      }
+    }
+
+    // Regra de ícones no header.
+    .icons {
+      display: inline-flex;
+      align-items: center;
+      vertical-align: top;
+      color: #6BA1D1;
+      font-size: 24px;
+      height: 100%;
+      // Width responsivo.
+      width: calc(~"100% - 200px - 249px");
+      // Regra de cada ícone na tela.
+      .icon {
+        padding-left: 16px;
+        padding-right: 16px;
+        // Regras do badge.
+        .badge {
+          display: flex;
+          position: absolute;
+          justify-content: center;
+          flex-direction: column;
+          text-align: center;
+          top: 12;
+          border-radius: 50%;
+          width: 16px;
+          height: 16px;
+          background: red;
+          color: #FFF;
+          font-size: 10px;
+          font-weight: bold;
+          margin-left: 14px;
+        }
+        &:hover {
+          cursor: pointer;
+          color: #88beef;
+        }
+      }
+    }
+
+    // Informações do usuário.
+    .user-info {
+      vertical-align: top;
+      display: inline-flex;
+      justify-content: flex-end;
+      height: 100%;
+      width: 240px;
+      .user-data {
+        display: inline-flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: right;
+        padding-right: 10px;
+        color: #fff;
+        .user-type {
+          font-size: 13px;
+        }
+      }
+      .user-picture {
+        display: inline-flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        width: 70px;
+        height: 100%;
+        background-color: #000;
+        font-size: 58px;
+        color: #fff;
+      }
+    }
+  }
+  // END: Regras de header.
+
+  // BEGIN: Left menu.
+  .left-menu {
+    width: 196px;
+    background-color: #4276A4;
+    color: #fff;
+    display: inline-block;
+    vertical-align: top;
+    height: calc(~"100% - 64px");
+    .options {
+      list-style-type: none;
+      padding: 10px;
+      .option {
+        padding: 5px;
+        .suboptions {
+          list-style-type: none;
+          padding-left: 20px;
+          & > li {
+            margin-top: 1px;
+            padding-top: 5px;
+            list-style-position:inside;
+            border-left: 1px dashed;
+            padding-left: 10px;
+          }
+        }
+      }
+    }
+  }
+  // END: Left menu.
+
+  // BEGIN: content-container
+  .content-container {
+    vertical-align: top;
+    display: inline-block;
+    width: calc(~"100% - 202px");
+    height: calc(~"100% - 64px");
+    overflow: auto;
+
+    // Bloco de conteúdo.
+    .content-block {
+      margin-top: 30px;
+      background-color: #fff;
+      margin-left: 10px;
+      padding-left: 10px;
+      -webkit-box-shadow: -16px 17px 53px -9px rgba(158,158,158,1);
+      -moz-box-shadow: -16px 17px 53px -9px rgba(158,158,158,1);
+      box-shadow: -16px 17px 53px -9px rgba(158,158,158,1);
+      .title {
+        font-size: 20px;
+        padding-top: 10px;
+      }
+
+      // Ganhos estimados.
+      .estimated-expenses {
+        margin-top: 30px;
+        .data-block {
+          display: inline-block;
+          width: 19%;
+          text-align: right;
+          .data-title {
+            font-size: 16px;
+            padding-top: 10px;
+          }
+          .data-value, .data-value-total {
+            font-size: 26px;
+          }
+          .data-value {
+            color: blue;
+            color: #666;
+          }
+          .data-value-total {
+            color: blue;
+          }
+        }
+
+        .comparison {
+          margin-top: 10px;
+          padding-left: 20px;
+          border-top: 1px solid #cdcdcd;
+          .comparison-button, .comparison-filter {
+            height: 50px;
+          }
+          .comparison-filter {
+            display: inline-block;
+            padding-top: 20px;
+            height: 32px;
+            width: calc(~"100% - 160px");
+          }
+          .comparison-button {
+            display: inline-flex;
+            vertical-align: top;
+            justify-content: center;
+            flex-direction: column;
+            border-radius: 5px;
+            border: 1px solid #cdcdcd;
+            background-color: #eeeeee;
+            padding-left: 10px;
+            padding-right: 10px;
+          }
+        }
+      }
+    }
+  }
+  // END: content-container
+
+}
+
+// Regras de tablet.
+@media @tablets {
+  .main-container {
+    // BEGIN: Regras de header.
+    .header {
+      // Regra de ícones no header.
+      .icons {
+        font-size: 20px;
+      }
+      // END: Regras de header.
+    }
+    // BEGIN: content-container
+    .content-container {
+      // Bloco de conteúdo.
+      .content-block {
+        .title {
+          font-size: 15px;
+        }
+        // Ganhos estimados.
+        .estimated-expenses {
+          .data-block {
+            .data-title {
+              font-size: 12px;
+            }
+            .data-value, .data-value-total {
+              font-size: 18px;
+            }
+          }
+          .comparison {
+            .comparison-button, .comparison-filter {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+    // END: content-container
+  }
+}
+
+// Regras de smartphones.
+@media @smartphones {
+  .main-container {
+    overflow: hidden;
+    // BEGIN: Regras de header.
+    .header {
+      .title {
+        display: inline-block;
+        font-size: 20px;
+        width: 97%;
+        .smartphone {
+          display: inline-flex;
+          .menu-button, .title-text {
+            display: inline-flex;
+            vertical-align: top;
+            justify-content: center;
+            flex-direction: column;
+            height: 100%;
+          }
+        }
+        // Não apresenta título de outras resoluções.
+        .title-text {
+          display: none;
+        }
+      }
+      // Regra de ícones no header.
+      .icons {
+        display: none;
+      }
+
+      // Informações do usuário.
+      .user-info {
+        display: none;
+      }
+      // END: Regras de header.
+    }
+
+    // BEGIN: regras de menu.
+    .left-menu {
+      display: none;
+      width: 100%;
+      .options {
+        font-size: 20px;
+        padding-left: 60px;
+      }
+    }
+    .show {
+      display: inline-block !important;
+    }
+    .hide {
+      display: none !important;
+    }
+    // END: regras de menu.
+
+    // BEGIN: content-container
+    .content-container {
+      width: 100%;
+      // Bloco de conteúdo.
+      .content-block {
+        .title {
+          font-size: 20px;
+          border-bottom: 1px solid #CDCDCD;
+        }
+        // Ganhos estimados.
+        .estimated-expenses {
+          margin-top: 0px;
+          .data-block {
+            width: 100%;
+            text-align: center;
+            &:not(:first-child) {
+              margin-top: 10px;
+            }
+            .data-title {
+              font-size: 28px;
+            }
+            .data-value, .data-value-total {
+              font-size: 24px;
+            }
+          }
+
+          // Filtro de comparação.
+          .comparison {
+            padding-bottom: 20px;
+            .comparison-filter {
+              width: 100%;
+              font-size: 18px;
+            }
+            .comparison-button {
+              margin-top: 30px;
+              margin-left: auto;
+              margin-right: auto;
+              display: block;
+              width: 30%;
+              text-align: center;
+              .button-text {
+                display: inline-flex;
+                vertical-align: top;
+                justify-content: center;
+                flex-direction: column;
+                height: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+    // END: content-container
+  }
+}

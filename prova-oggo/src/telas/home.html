@@ -1,0 +1,69 @@
+<!-- @author: Oggo Petersen -->
+<div>
+  <!-- BEGIN: Ganhos estimados -->
+  <div class="content-block">
+    <div class="title">Ganhos estimados</div>
+
+    <div class="estimated-expenses">
+      <div class="data-block">
+        <div class="data-content">
+          <div class="data-title">Total</div>
+          <div class="data-value-total">R$ {{estimatedExpenses.total}}</div>
+        </div>
+      </div>
+
+      <div class="data-block">
+        <div class="data-content">
+          <div class="data-title">Para o dia atual</div>
+          <div class="data-value">R$ {{estimatedExpenses.currentDay}}</div>
+        </div>
+      </div>
+
+      <div class="data-block">
+        <div class="data-content">
+          <div class="data-title">Durante o dia anterior</div>
+          <div class="data-value">R$ {{estimatedExpenses.lastDay}}</div>
+        </div>
+      </div>
+
+      <div class="data-block">
+        <div class="data-content">
+          <div class="data-title">Para o mês atual</div>
+          <div class="data-value">R$ {{estimatedExpenses.currentMonth}}</div>
+        </div>
+      </div>
+
+      <div class="data-block">
+        <div class="data-content">
+          <div class="data-title">Mês passado</div>
+          <div class="data-value">R$ {{estimatedExpenses.lastMonth}}</div>
+        </div>
+      </div>
+
+      <!-- Filtro de comparação -->
+      <div class="comparison">
+        <div class="comparison-filter">
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+          Comparação de hoje com o mesmo dia da semana passada
+          <i class="fa fa-caret-down"></i>
+        </div>
+        <div class="comparison-button">
+          <div class="button-text">
+            Minha conta
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END: Ganhos estimados -->
+
+  <!-- BEGIN: Gráficos -->
+  <div class="content-block">
+    <div class="title">Gráfico</div>
+    <div id="chart" >
+      <svg style="height: 300px; width: 98%;"></svg>
+    </div>
+  </div>
+  <!-- END: Gráficos -->
+
+</div>
