@@ -1,0 +1,43 @@
+#head-user {
+  text-align: left;
+}
+
+#head-user .user-image {
+  height: 5rem;
+  float: left;
+  width: 5rem;
+}
+
+#head-user .user-info {
+  float: left;
+  margin: 0.75rem 1rem;
+  font-size: 1.275rem;  
+}
+
+#head-user .user-info div:nth-child(1) {
+  color: #7A7A7A;
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+#head-user .user-notifications {
+  float: right;
+}
+
+#head-user .user-notifications .material-icons {
+  font-size: 2.5rem;
+  padding: 1rem;
+}
+
+@media (min-width: 992px) { 
+	#head-user {
+    background-color: #fff;
+    box-shadow: 10px 1px 10px lightgrey;
+    float:left;
+    width: 80%;
+  }
+
+  #head-user .user-image {float: right;}
+  #head-user .user-info {float: right;}
+  #head-user .user-notifications {float: left;}  
+}

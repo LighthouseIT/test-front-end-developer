@@ -1,0 +1,74 @@
+#dashboard {text-align: center;}
+
+#dashboard .filter:active, #dashboard .filter:focus, 
+#dashboard .filter:hover {outline: 0;}
+
+#dashboard .filter {
+  background-color: #fff;
+  border: none;
+  border-bottom: 1px solid #D1D1D1;
+	color: #A7A7A7;
+  padding-bottom: 1rem;
+}
+
+#dashboard .filter span {padding: 1rem;}
+#dashboard .filter .align-middle {vertical-align: middle;}
+
+#dashboard h1 {
+  color: #7A7A7A;
+  font-size: 1.5rem;
+  margin: 1rem 0 2rem 0;
+}
+
+#dashboard .label {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+#dashboard .value.color {color:#05E5E5}
+#dashboard .value {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+#dashboard .carousel__dot-group .carousel__dot--selected {background-color: #05E5E5;}
+#dashboard .carousel__dot-group button{
+  background-color: #7A7A7A;
+  border: none;
+  border-radius: 50%;
+  height: 1rem;
+  margin: 0 1rem 2rem 1rem;
+  width: 1rem;  
+}
+
+@media (min-width: 992px) {
+  .earnings-title {
+    color: #7A7A7A;
+    font-size: 1.5rem;
+  }
+
+  #dashboard .filter {
+    border-top: 1px solid #D1D1D1;
+    border-bottom: none;
+    font-size: 1rem;
+    text-align: left;
+    margin-left: 1rem;
+    vertical-align: center;
+    width: 100%;
+  }  
+
+  #dashboard .my-account {
+    background-color: #05E5E5;
+    border: none;
+    color: #fff;
+    display: block;
+    height: 100%;
+    padding: 1.5rem 0.5rem;
+    width: 100%;
+  }
+
+  #dashboard .no-space {
+    margin: 0;
+    padding: 0;
+  }
+}
