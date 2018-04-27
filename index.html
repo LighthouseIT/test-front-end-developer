@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="css/zSlider.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <title>Dashboard</title>
+</head>
+
+<body>
+  <!-- Inicio Dropdown -->
+  <nav>
+    <div class="navbar dropdown fonteCinza">
+      <i class="material-icons lista bg-vdescuro white dropbtn">&#xE896;</i>
+      <div id="myDropdown" class="dropdown-content">
+        <div class="usuario hide-desk">
+          <img src="img/steve.jpg" class="imagemUsuario" alt="">
+          <div class="infoUsuario">
+            <a class="bigger-font">Usuário...</a>
+            <a class="small-font">Gerente</a>
+          </div>
+          <i class="material-icons">&#xE001;</i>
+          <i class="material-icons">&#xE0C9;</i>
+        </div>
+        <div class="menuDropdown">
+          <a href="#home">Home</a>
+          <a href="#contact" class="listaTrabalho">Lista de Trabalho</a>
+          <div class="submenu-listaTrabalho submenu-listaTrabalho--show">
+            <a href="#home">Calendário</a>
+            <a href="#contact">Atividades</a>
+          </div>
+          <a href="#home">Ciclo de Vendas</a>
+          <a href="#contact">Marketing</a>
+          <a href="#home" class="criar">+ Criar</a>
+          <div class="submenu-criar submenu-criar--show">
+            <a href="#home">Tarefa</a>
+            <a href="#contact">Email</a>
+            <a href="#contact">Contato</a>
+            <a href="#contact">Lead</a>
+            <a href="#contact">Questão</a>
+          </div>
+        </div>
+      </div>
+      <a class="bg-vdclaro white dashboard">Dashboard</a>
+      <i class="material-icons bg-vdclaro white search hide-desk">&#xE8B6;</i>
+    </div>
+  </nav>
+  <!-- Final Dropdown -->
+  <!-- Inicio do slide de DIVS do card superior -->
+  <section id="dados hide-desk" class="bg-white">
+    <div class="text-center calendario hide-desk">
+      <i class="material-icons">&#xE8A3;</i>
+      <a>Comparacao de hoje com...</a>
+      <i class="material-icons">&#xE313;</i>
+
+    </div>
+    <hr class="hide-desk">
+    <div class="z-slide-wrap altura fonteCinza hide-desk" id="demo">
+      <ul class="z-slide-content">
+        <li class="z-slide-item" id="primeiro">
+          <a href="#">
+          </a>
+        </li>
+        <li class="z-slide-item" id="segundo">
+          <a href="#">
+          </a>
+        </li>
+        <li class="z-slide-item" id="terceiro">
+          <a href="#">
+          </a>
+        </li>
+    </div>
+    </div>
+  </section>
+  <!-- Final do slide de DIVS do card superior -->
+  <!-- Barra divisória -->
+  <div class="text-center bg-vdclaro white header-grafico hide-desk">
+    <p style="margin-top:0px;">Minhas Contas</p>
+  </div>
+  <!-- Inicio da seção do Gráfico -->
+  <section id="grafico" class="bg-white">
+    <div class="barraGrafico">
+      <a>
+        <i class="material-icons fonteCinza">&#xE24B;</i>
+      </a>
+      <a id="troca">
+        <i class="material-icons fonteCinza">&#xE6E1;</i>
+      </a>
+      <i class="material-icons fonteCinza">&#xE0C3;</i>
+      <a class="fonteCinza">Zoom</a>
+      <i class="material-icons fonteCinza">&#xE85D;</i>
+      <a class="sair fonteCinza">x</a>
+    </div>
+    <!-- Injeção do gráfico feita pelo JS -->
+    <div class="grafico">
+      <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+  </section>
+<!-- Final da seção do Gráfico -->
+
+  <script src="js/zSlider.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
