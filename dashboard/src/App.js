@@ -2,6 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import Chart from 'chart.js';
 import 'preact-material-components/style.css';
+import MenuPage from './components/MenuPage'
 
 const ProfilePic = styled.i`font-size:64px; background: whitesmoke;`;
 
@@ -21,6 +22,10 @@ const Icon = styled.i`
   ${ props => props.on320 ? '@media (max-width: 320px) { display:initial }; display:none;' : ''}
   ${ props => props.on360 ? '@media (max-width: 360px) { display:initial }; display:none;' : ''}
 
+  ${props => props.left ? 'margin-right: auto; margin-left: 0;' : ''}
+  ${props => props.right ? 'margin-right: 0; margin-left: auto;' : ''}
+  ${props => props.center ? 'margin-right: 0; margin-left: 0;' : ''}
+
   ${ props => props.marginLarge ? 'margin:25px;' : ''}
   ${ props => props.marginSmall ? 'margin:5px;' : ''}
 
@@ -38,10 +43,27 @@ const SectionBase = styled.section`
   ${ props => props.no480 ? '@media (max-width: 480px) { display:none }; display:inherit;' : ''}
   ${ props => props.no600 ? '@media (max-width: 600px) { display:none }; display:inherit;' : ''}
 
-  ${ props => props.block ? 'display:block;' : ''}
-  ${ props => props.inline ? 'display:inline-block;' : ''}
+  ${ props => props.inline ? 'display:inline-block;' : 'display:block;'}  ;
+
+  ${props => props.left ? 'margin-right: auto; margin-left: 0;' : ''}
+  ${props => props.right ? 'margin-right: 0; margin-left: auto;' : ''}
+  ${props => props.center ? 'margin-right: 0; margin-left: 0;' : ''}
+
   
-  
+`;
+
+const FlexBox = styled.div`
+display:flex;
+justify-content:space-between;
+align-items: center;
+
+`;
+const FlexSection = styled.section`
+display:inline-flex;
+flex:1
+${props => props.left ? 'justify-content: flex-start;' : ''}
+${props => props.right ? 'justify-content: flex-end;;' : ''}
+${props => props.center ? 'justify-content: flex-center;' : ''}
 `;
 
 const Sp1 = SpanBase.extend`font-size:75%; font-weight:bold; color:#c0cbd5;`;
@@ -72,33 +94,39 @@ class App extends React.Component {
         </header>
 
         {/* Drawer */}
-        <div style={{ display: 'none' }}>
-          <ul>
-            <ul className="mdc-list">
-              <h>Lista de Trabalho</h>
-              <li className="mdc-list-item">Calendário</li>
-              <li className="mdc-list-item">Atividades</li>
+        <div style={{ display: 'initial', position: 'absolute', left: '-100' }}>
+          <div>
+
+          </div>
+          <div>
+            <ul>
+              <ul className="mdc-list">
+                <h>Lista de Trabalho</h>
+                <li className="mdc-list-item">Calendário</li>
+                <li className="mdc-list-item">Atividades</li>
+              </ul>
+              <ul className="mdc-list">
+                <h>Ciclo de Vendas</h>
+              </ul>
+              <ul className="mdc-list">
+                <h>Marketing</h>
+              </ul>
+              <ul className="mdc-list">
+                <h>Criar</h>
+                <li className="mdc-list-item">
+                  <Icon className="material-icons">add_circle_outline</Icon>Tarefas</li>
+                <li className="mdc-list-item">
+                  <Icon className="material-icons">add_circle_outline</Icon>Email</li>
+                <li className="mdc-list-item">
+                  <Icon className="material-icons">add_circle_outline</Icon>Contato</li>
+                <li className="mdc-list-item">
+                  <Icon className="material-icons">add_circle_outline</Icon>Lead</li>
+                <li className="mdc-list-item">
+                  <Icon className="material-icons">add_circle_outline</Icon>Questão</li>
+              </ul>
             </ul>
-            <ul className="mdc-list">
-              <h>Ciclo de Vendas</h>
-            </ul>
-            <ul className="mdc-list">
-              <h>Marketing</h>
-            </ul>
-            <ul className="mdc-list">
-              <h>Criar</h>
-              <li className="mdc-list-item">
-                <Icon className="material-icons">add_circle_outline</Icon>Tarefas</li>
-              <li className="mdc-list-item">
-                <Icon className="material-icons">add_circle_outline</Icon>Email</li>
-              <li className="mdc-list-item">
-                <Icon className="material-icons">add_circle_outline</Icon>Contato</li>
-              <li className="mdc-list-item">
-                <Icon className="material-icons">add_circle_outline</Icon>Lead</li>
-              <li className="mdc-list-item">
-                <Icon className="material-icons">add_circle_outline</Icon>Questão</li>
-            </ul>
-          </ul>
+          </div>
+
         </div>
 
         {/* content */}
@@ -107,7 +135,7 @@ class App extends React.Component {
             <section className="layout-grid-in-fluid-container">
               <div className=" mdc-layout-grid " style={{ padding: '10px' }}>
                 <div className="mdc-layout-grid__inner ">
-                  <SectionBase no360 className="mdc-layout-grid__cell ">
+                  <SectionBase className="mdc-layout-grid__cell ">
                     <div className="mdc-typography--body1"><P1>Ganhos Estimados</P1></div>
                   </SectionBase>
                   <SectionBase no360 className="mdc-layout-grid__cell ">
@@ -121,7 +149,6 @@ class App extends React.Component {
                     <div className="mdc-typography--body1"><Sp1>Total do dia:</Sp1></div>
                     <div className="mdc-typography--body2"><P1>R$5.004,12</P1></div>
                   </section>
-
                   <section className="mdc-layout-grid__cell mdc-layout-grid__cell--span-2">
                     <div className="mdc-typography--body1"><Sp1>Total do dia:</Sp1></div>
                     <div className="mdc-typography--body2"><P1>R$25,12</P1></div>
@@ -139,33 +166,29 @@ class App extends React.Component {
                     <div className="mdc-typography--body2"><P1>R$2.504,12</P1></div>
                   </section>
                 </div>
-              </div>
 
+              </div>
             </section>
           </Card>
 
           <Card className="mdc-card ">
-            <SectionBase inline className="">
-              <div id="js-pre-selected" className="mdc-select">
-                <select className="mdc-select__native-control" id="select-preselected" selected="tipo" style={{ fontSize: '75%', fontWeight: 'bold', color: '#c0cbd5', width: 'inherit' }}>
-                  <option value="coluna" selected=""><Sp2>Coluna</Sp2></option>
-                  <option value="linha"><Sp2>Linha</Sp2></option>
-                  <option value="torta" ><Sp2>Torta</Sp2></option>
-                  <option value="coluna-agrupadas"><Sp2>Colunas Agrupadas</Sp2></option>
-                </select>
-                <label className="mdc-floating-label mdc-floating-label--float-above" for="select-preselected"><P2>Tipo</P2></label>
-                <div className="mdc-line-ripple"></div>
-              </div>
-              <Icon marginSmall inline on360 className="material-icons">more</Icon>
-              <Icon marginSmall inline on360 className="material-icons">close</Icon>
-            </SectionBase>
-            <section className="mdc-layout-grid__inner">
-              <canvas className="mdc-layout-grid__cell" id="myChart" width="400" height="400"></canvas>
+            <FlexBox>
+              <FlexSection >
+                <button className="mdc-button mdc-button--raised mdc-ripple-upgraded" style={{ padding: '1px 4px' }}><i className="material-icons" style={{ marginRight: '8px' }}>insert_chart</i> Tipo <i class="material-icons" style={{ marginLeft: '16px' }}>expand_more</i></button>
+              </FlexSection>
+              <FlexSection right >
+                <Icon marginSmall inline on360 className="material-icons">more_horiz</Icon>
+                <Icon right marginSmall inline on360 className="material-icons">close</Icon></FlexSection>
+            </FlexBox>
+            <MenuPage>
+            </MenuPage>
+            <div>
+              <hr />
+            </div>
+            <section >
+              <canvas id="myChart" style={{ maxHeight: '75vh' }}></canvas>
             </section>
           </Card>
-
-
-
         </ContentBox>
       </div>
     );
