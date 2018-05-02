@@ -50,6 +50,7 @@ export default class ChartCard extends React.Component{
       }
     render = () =>(
         <BaseCard 
+        style={{maxHeight:'75vh'}}
         titleStyle={{borderBottom:'solid lightgrey 2px', padding:'10px'}}
             cardTitle={
                 <FlexBox >
