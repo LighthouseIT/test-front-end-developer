@@ -3,6 +3,7 @@ import {Card, CardActions, CardHeader, CardText,CardTitle} from 'material-ui/Car
 
 export default class BaseCard extends React.Component
 {
+  //TO-DO:Merge dos styles
   render= () => (
   <Card style={{margin:'5vh 0'}}>
     {this.props.title||this.props.subtitle?
@@ -23,10 +24,9 @@ export default class BaseCard extends React.Component
         {this.props.cardActions}
       </CardActions>
     :null}
-    {this.props.cardContent?
       <CardText>
+        {this.props.children}
         {this.props.cardContent}
       </CardText>
-    :null}
   </Card>
 )}

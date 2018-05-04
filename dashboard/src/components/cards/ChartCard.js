@@ -1,9 +1,13 @@
+import axios from 'axios';
 import Chart from 'chart.js';
 import React from 'react';
 import styled from "styled-components";
 import BaseCard from '../BaseCard';
 import ButtonMenu from'../ButtonMenu'
 import MenuItem from 'material-ui/MenuItem';
+import IconButton from 'material-ui/IconButton';
+import FontIcon from 'material-ui/FontIcon';
+import uniqid from 'uniqid';
 
 const FlexBox = styled.div`
     display:flex;
@@ -18,27 +22,17 @@ const FlexSection = styled.section`
     ${props => props.right ? 'justify-content: flex-end;;' : ''}
     ${props => props.center ? 'justify-content: flex-center;' : ''}
 `;
-const Icon = styled.i`
-    margin:15px;
-    ${ props => props.block ? 'display:block !important;' : ''}
-    ${ props => props.inline ? 'display:inline-block !important;' : ''}
 
-    ${ props => props.no320 ? '@media (max-width: 320px) { display:none };' : ''}
-    ${ props => props.no360 ? '@media (max-width: 360px) { display:none }; ' : ''}
-    ${ props => props.no480 ? '@media (max-width: 480px) { display:none }; ' : ''}
-    ${ props => props.no600 ? '@media (max-width: 600px) { display:none }; ' : ''}
-    ${ props => props.on320 ? '@media (max-width: 320px) { display:initial }; display:none;' : ''}
-    ${ props => props.on360 ? '@media (max-width: 360px) { display:initial }; display:none;' : ''}
-
-    ${props => props.left ? 'margin-right: auto; margin-left: 0;' : ''}
-    ${props => props.right ? 'margin-right: 0; margin-left: auto;' : ''}
-    ${props => props.center ? 'margin-right: 0; margin-left: 0;' : ''}
-
-    ${ props => props.marginLarge ? 'margin:25px;' : ''}
-    ${ props => props.marginSmall ? 'margin:5px;' : ''}
-
-
+const StyledFontIcon = styled(FontIcon)`
+    color:black !important;
+    ${ props => props.no320 ? '@media (max-width: 320px) { display:none !important; margin:0px;};' : ''}
+    ${ props => props.no360 ? '@media (max-width: 360px) { display:none !important; margin:0px; }; ' : ''}
+    ${ props => props.no480 ? '@media (max-width: 480px) { display:none !important; margin:0px; }; ' : ''}
+    ${ props => props.no600 ? '@media (max-width: 600px) { display:none !important; margin:0px; }; ' : ''}
+    ${ props => props.on320 ? '@media (min-width: 320px) {  display:none !important; }; ' : ''}
+    ${ props => props.on360 ? '@media (min-width: 361px) { display:none !important;  }; ' : ''}
 `;
+const StyledIconButton = StyledFontIcon.withComponent(IconButton);
 
 export default class ChartCard extends React.Component{
     constructor(props) {
@@ -46,11 +40,12 @@ export default class ChartCard extends React.Component{
     
         this.state = {
           chartType: 'bar',
+          canvasId:uniqid.time(),
+          chartData:{days:[], values:[]}
         };
       }
     render = () =>(
         <BaseCard 
-        style={{maxHeight:'75vh'}}
         titleStyle={{borderBottom:'solid lightgrey 2px', padding:'10px'}}
             cardTitle={
                 <FlexBox >
@@ -59,18 +54,24 @@ export default class ChartCard extends React.Component{
                             <MenuItem primaryText="Colunas" onClick={(e)=>{this.setChartType(e,'bar')}} />
                             <MenuItem primaryText="Torta" onClick={(e)=>{this.setChartType(e,'pie')}} />
                             <MenuItem primaryText="Linhas" onClick={(e)=>{this.setChartType(e,'line')}} />
-                            <MenuItem primaryText="Colunas Agrupadas" onClick={(e)=>{this.setChartType(e,'bar')}} />
+                            <MenuItem primaryText="Doughnut" onClick={(e)=>{this.setChartType(e,'doughnut')}} />
+                            <MenuItem primaryText="Polar" onClick={(e)=>{this.setChartType(e,'polarArea')}} />
                         </ButtonMenu>
                     </FlexSection>
                     <FlexSection right >
-                        <Icon marginSmall inline on360 className="material-icons">more_horiz</Icon>
-                        <Icon right marginSmall inline on360 className="material-icons">close</Icon>
+                    <StyledIconButton>
+                        <StyledFontIcon className="material-icons">more_horiz</StyledFontIcon>
+                    </StyledIconButton>
+                    <StyledIconButton>
+                        <StyledFontIcon className="material-icons" onClick={(e)=>{this.props.deleteFunc(e, this.props.id)}}>close</StyledFontIcon>
+                    </StyledIconButton>
                     </FlexSection>
                 </FlexBox>
             }
+            //TO-DO: Arrumar o tamanho do gráfico para desktop, style funciona bem para mobile
             cardContent={
-                <section >
-                    <canvas id="myChart" style={{ maxHeight: '75vh' }}></canvas>
+                <section style={{ maxHeight: '75vh' }} >
+                    <canvas id={this.state.canvasId} ></canvas>
                 </section>
             }
         />
@@ -80,52 +81,67 @@ export default class ChartCard extends React.Component{
         e.preventDefault();
         this.setState({chartType:tp});
     }
+
+    getChartData = () =>{
+        axios.get('https://lighthouse-test-front-end.firebaseio.com/amount.json').then(
+            response => this.setState({chartData:response.data}));
+    }
     componentDidMount = () => {
+        this.getChartData();
         this.BuildChart(null, null, null);
     };
 
     componentDidUpdate =()=>{
-    this.BuildChart(null, null, null);
+        this.BuildChart(null, null, null);
     }
     BuildChart = (data, canvas, type) => {
-        //TO-DO: Use canvas passed as argument.
-        //TO-DO: Use data passed as argument.
-        //TO-DO: Multiple types.
-        var ctx = document.getElementById("myChart");
+        //TO-DO: Usar argumentos?
+        var chartLabel = this.state.chartData.days;
+        var chartData = this.state.chartData.values;
+
+        var ctx = document.getElementById(this.state.canvasId);
         var myChart = new Chart(ctx, {
+            options:{
+                responsive:true,
+                onResize:(a,e)=>this.BuildChart()
+            },
           type: this.state.chartType,
           data: {
-            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+            labels: chartLabel,
             datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
+              label: 'Resultado',
+              data: chartData,
               backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                'rgba(255, 99, 132, 0.85)',
+                'rgba(54, 162, 235, 0.85)',
+                'rgba(255, 206, 86, 0.85)',
+                'rgba(75, 192, 192, 0.85)',
+                'rgba(153, 102, 255, 0.85)',
+                'rgba(255, 159, 64, 0.85)',
+                'rgba(132, 255, 99, 0.85)',
+                'rgba(235, 54, 162, 0.85)',
+                'rgba(86, 255, 206, 0.85)',
+                'rgba(192, 75, 192, 0.85)',
+                'rgba(255, 153, 102, 0.85)',
+                'rgba(64, 255, 159, 0.85)'
+
               ],
               borderColor: [
-                'rgba(255,99,132,1)',
+                'rgba(255, 99, 132, 1)',
                 'rgba(54, 162, 235, 1)',
                 'rgba(255, 206, 86, 1)',
                 'rgba(75, 192, 192, 1)',
                 'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                'rgba(255, 159, 64, 1)',
+                'rgba(132, 255, 99, 1)',
+                'rgba(235, 54, 162, 1)',
+                'rgba(86, 255, 206, 1)',
+                'rgba(192, 75, 192, 1)',
+                'rgba(255, 153, 102, 1)',
+                'rgba(64, 255, 159, 1)'
               ],
               borderWidth: 1
             }]
-          },
-          options: {
-            scales: {
-              yAxes: [{
-                ticks: {
-                  beginAtZero: true
-                }
-              }]
-            }
           }
         });
       }

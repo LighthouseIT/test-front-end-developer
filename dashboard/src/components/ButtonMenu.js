@@ -14,19 +14,12 @@ export default class ButtonMenu extends React.Component {
   }
 
   handleClick = (event) => {
-    // This prevents ghost click.
     event.preventDefault();
-
-    this.setState({
-      open: true,
-      anchorEl: event.currentTarget,
-    });
+    this.setState({open: true,anchorEl: event.currentTarget,});
   };
 
   handleRequestClose = () => {
-    this.setState({
-      open: false,
-    });
+    this.setState({open: false});
   };
 
   render() {
@@ -48,7 +41,6 @@ export default class ButtonMenu extends React.Component {
         >
           <Menu>
             {this.props.children}
-
           </Menu>
         </Popover>
       </div>
