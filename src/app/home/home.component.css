@@ -1,0 +1,24 @@
+.gastos-container {
+    margin-left: 10px;
+}
+
+mat-card {
+    width: 85%;
+    margin: 10px 0 10px 0;
+    float: left;
+}
+
+.home-valores {
+    float: left;
+    margin: 15px 60px 0 0 !important;
+}
+
+.home-valores > p {
+    margin: 0;
+    border-bottom: 1px solid lightgray;
+}
+
+.home-valores > h4 {
+    text-align: right;
+}
+

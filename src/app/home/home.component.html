@@ -1,0 +1,61 @@
+<div class="gastos-container">
+    <mat-card>
+        <mat-card-title>
+            <h2>Ganhos estimados</h2>
+        </mat-card-title>
+        <mat-card-subtitle>
+            Código do cliente: ECGR XPTO ABCD FGHI
+        </mat-card-subtitle>
+        <mat-card-content>
+            <mat-progress-bar mode="indeterminate" *ngIf="expensesLoading"></mat-progress-bar>
+            <div class="home-valores" *ngIf="expenses.total !== undefined">
+                <p mat-line>Total</p>
+                <h4 mat-line>{{ expenses.total | moeda }}</h4>
+            </div>
+            <div class="home-valores" *ngIf="expenses.currentDay !== undefined">
+                <p mat-line>Para o dia atual</p>
+                <h4 mat-line>{{ expenses.currentDay | moeda }}</h4>
+            </div>
+            <div class="home-valores" *ngIf="expenses.lastDay !== undefined">
+                <p mat-line>Durante o dia anterior</p>
+                <h4 mat-line>{{ expenses.lastDay | moeda }}</h4>
+            </div>
+            <div class="home-valores" *ngIf="expenses.currentMonth !== undefined">
+                <p mat-line>Para o mês atual</p>
+                <h4 mat-line>{{ expenses.currentMonth | moeda }}</h4>
+            </div>
+            <div class="home-valores" *ngIf="expenses.lastMonth !== undefined">
+                <p mat-line>Mês passado</p>
+                <h4 mat-line>{{ expenses.lastMonth | moeda}}</h4>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <mat-card>
+        <mat-card-title>
+            <mat-toolbar class="mat-elevation-z2">
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <h3>Quantidade</h3>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="drawChart('column')">
+                        <mat-icon>view_column</mat-icon>
+                        <span>Coluna</span>
+                    </button>
+                    <button mat-menu-item  (click)="drawChart('line')">
+                        <mat-icon>timeline</mat-icon>
+                        <span>Linha</span>
+                    </button>
+                    <button mat-menu-item (click)="drawChart('pie')">
+                        <mat-icon>pie_chart</mat-icon>
+                        <span>Torta</span>
+                    </button>
+                </mat-menu>
+            </mat-toolbar>
+        </mat-card-title>
+        <mat-card-content>
+            <mat-progress-bar mode="indeterminate" *ngIf="amountsLoading"></mat-progress-bar>
+            <div [chart]="chart"></div>
+        </mat-card-content>
+    </mat-card>
+</div>
