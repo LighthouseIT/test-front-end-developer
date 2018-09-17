@@ -1,0 +1,66 @@
+.dashboard-toolbar {
+    height: 50px;
+    padding-right: 0;
+    position: fixed;
+    top: 0
+}
+
+.dashboard-toolbar > mat-icon {
+    margin: 0px 8px 0px;
+}
+
+.dashboard-spacer {
+    flex: 1 1 auto;
+}
+
+.dashboard-toolbar-user {
+    text-align: right;
+}
+
+.dashboard-toolbar-userinfo {
+    font-size: 14px;
+    margin: 5px 5px 0;
+    height: 20px;
+}
+
+.dashboard-toolbar-usertype {
+    font-size: 11px;
+    font-weight: normal;
+    margin: 0 5px 0;
+}
+
+.dashboard-toolbar-image {
+    width: 50px;
+    height: 50px;
+    background-image: url('/assets/user.png');
+    background-size: cover;
+}
+
+.dashboard-sidenav-container {
+    position: absolute;
+    top: 55px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: transparent;
+}
+
+.dashboard-sidenav a {
+    font-size: 13px;
+    height: 33px;
+}
+
+.dashboard-sidenav a mat-icon {
+    padding-right: 10px;
+}
+
+.dashboard-sidenav .mat-subheader {
+    padding: 5px;
+    margin: 0;
+    font-size: 12px;
+}
+
+.dashboard-sidenav mat-divider {
+    margin-top: 10px;
+}
+
